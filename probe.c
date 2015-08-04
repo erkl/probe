@@ -80,8 +80,11 @@ int main(int argc, const char ** argv) {
 
         if (stream->start_time > 0)
             start_time = stream->start_time * av_q2d(stream->time_base);
+
         if (stream->duration > 0)
             end_time = start_time + (stream->duration * av_q2d(stream->time_base));
+        else
+            end_time = start_time;
 
         printf(",\n      \"start_time\": %f", start_time);
         printf(",\n      \"end_time\": %f", end_time);
